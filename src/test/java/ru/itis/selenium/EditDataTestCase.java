@@ -13,11 +13,11 @@ public class EditDataTestCase extends TestBase {
 
     @Test
     public void editData() {
-        app.getNavigation().openHomePage();
-        app.getNavigation().openGroupPage();
-        app.getAuth().login(user);
-        app.getNavigation().goToAccount();
-        app.getContact().editDataFields(person);
+        openHomePage();
+        openGroupPage();
+        login(user);
+        goToAccount();
+        editDataFields(person);
     }
 
 }
