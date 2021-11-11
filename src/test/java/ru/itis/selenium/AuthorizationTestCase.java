@@ -10,9 +10,9 @@ public class AuthorizationTestCase extends TestBase {
 
     @Test
     public void AuthorizationTestCase() throws Exception {
-        app.getNavigation().openHomePage();
-        app.getNavigation().openGroupPage();
-        app.getAuth().login(user);
+        openHomePage();
+        openGroupPage();
+        login(user);
     }
 
 }
