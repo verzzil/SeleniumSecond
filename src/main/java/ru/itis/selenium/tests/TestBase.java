@@ -1,20 +1,16 @@
 package ru.itis.selenium.tests;
 
-import org.junit.After;
 import org.junit.Before;
 import ru.itis.selenium.ApplicationManager;
+import ru.itis.selenium.model.AccountData;
 
 public class TestBase {
 
-    protected ApplicationManager app;
+    public ApplicationManager app;
+    protected AccountData user = new AccountData("xannanov.albert@mail.ru", "qwerty007");
 
     @Before
     public void setUp() throws Exception {
-        app = new ApplicationManager();
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        app.stop();
+        app = ApplicationManager.getInstance();
     }
 }

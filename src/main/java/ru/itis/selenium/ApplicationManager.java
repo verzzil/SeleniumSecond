@@ -8,6 +8,8 @@ import ru.itis.selenium.helpers.LoginHelper;
 import ru.itis.selenium.helpers.NavigationHelper;
 
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
+
 import static org.junit.Assert.fail;
 
 public class ApplicationManager {
@@ -15,11 +17,23 @@ public class ApplicationManager {
     private final WebDriver driver;
     private final StringBuffer verificationErrors;
     JavascriptExecutor js;
-    private boolean acceptNextAlert = true;
+    private final boolean acceptNextAlert = true;
 
     private final NavigationHelper navigation;
     private final LoginHelper auth;
     private final ContactHelper contact;
+
+    private static ThreadLocal<ApplicationManager> app = null;
+
+    public static ApplicationManager getInstance() {
+        if (app == null) {
+            app = new ThreadLocal<>();
+            ApplicationManager newInstance = new ApplicationManager();
+            newInstance.navigation.openHomePage();
+            app.set(newInstance);
+        }
+        return app.get();
+    }
 
     public ApplicationManager() {
         System.setProperty("webdriver.chrome.driver", "D:\\Another\\Univercity\\Тесты\\SeleniumSecond\\chromedriver.exe");
